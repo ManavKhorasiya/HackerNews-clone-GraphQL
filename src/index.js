@@ -1,10 +1,10 @@
 const { GraphQLServer } = require('graphql-yoga')
-let links = [{
+var links = [{
     id:'link-0',
     url:'www.howtographql.com',
     description:'Full stack tutorial for GraphQl'
 }]
-let idCount = links.length
+var idCount = links.length
 
 const resolvers = {
     Query : {
@@ -20,6 +20,15 @@ const resolvers = {
             }
             links.push(link);
             return link
+        },
+        deleteLink : (parent,args) => {
+            var obj = links.filter(link  => {
+                return link.id == args.id
+            })[0];
+            var index = links.indexOf(obj);
+            console.log(index);
+            links.splice(index,1);
+            return obj
         }
     },
     
