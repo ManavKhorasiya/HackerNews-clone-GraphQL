@@ -1,5 +1,5 @@
-const { GraphQLServer } = require('graphql-yoga')
-var links = [{
+const { GraphQLServer } = require('graphql-yoga')                               //GraphQL Prisma server, change to Apollo in next commit
+var links = [{                                                                  //static links storage
     id:'link-0',
     url:'www.howtographql.com',
     description:'Full stack tutorial for GraphQl'
@@ -7,7 +7,7 @@ var links = [{
 var idCount = links.length
 
 const resolvers = {
-    Query : {
+    Query : {                                                                  //query resolver
         info : () => `This is API of a Hackernews Clone`,
         feed : () => links,
     }, 
